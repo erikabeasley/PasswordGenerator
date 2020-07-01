@@ -1,4 +1,4 @@
-//Declare Variables/////
+//Declare Variables
 var input;
 var confirmLowerCase;
 var confirmUpperCase;
@@ -9,7 +9,7 @@ var choices;
 lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 number = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -28,12 +28,12 @@ function writePassword() {
 //Function to generate Password//////
 function generatePassword() {
     //ask for user input
-    input = parseInt(promt("How many characters would you like in your password? (Must be at least 8 and no more than 128"));
+    input = parseInt(prompt("How many characters would you like in your password? (Must be at least 8 and no more than 128"));
     //if invlaid
     if (!input) {
         alert("You must have a value!");
-    }else if (input < 8 || input > 128) {
-        alert("Your password must choose between 8 and 128 characters");
+    } else if (input < 8 || input > 128) {
+        alert("Your password must be between 8 and 128 characters");
     }
     else {
         confirmLowerCase = confirm("Would you like to include uppercase letters?");
@@ -47,11 +47,11 @@ function generatePassword() {
         choices = alert("You must select criteria for your password.");
     }
     //Else if all four selected yes
-    else if (confirmLowerCase && confirmUpperCase && confirmNumber) {
-        choices = character.concat(lower,upper,number);
+    else if (confirmLowerCase && confirmUpperCase && confirmNumber && confirmSpecialCharacter) {
+        choices = lower.concat(upper,number,special);
     }
 
-    //Else if three selections
+    //Else if for three selections
     else if (confirmLowerCase && confirmUpperCase && confirmSpecialCharacter) {
         choices = lower.concat(upper,special);
     }
@@ -62,7 +62,7 @@ function generatePassword() {
         choices = upper.concat(number,special);
     }
 
-    //Else if two selections
+    //Else if for only two selections
     else if (confirmLowerCase && confirmUpperCase) {
         choices = lower.concat(upper);
     }
@@ -82,7 +82,7 @@ function generatePassword() {
         choices = number.concat(special);
     }
 
-    //Else if one selection
+    //Else if for only one criteria selection
     else if (confirmLowerCase) {
         choices = lower;
     }
@@ -96,39 +96,16 @@ function generatePassword() {
         choices = special;
     }
 
+    //Define variable for the for loop below
     var password = [];
 
-    //Random Selection for variables
-    // Random Function
-    // var randomFunction = {
-    //     lower: getRandomLowerCase,
-    //     upper: getRandomUpperCase,
-    //     number: getRandomNumber,
-    //     special: getRandomSpecialCharacter
-    // };
-
-    // //Generator functions
-    // function getRandomLowerCase() {
-    //     return String.fromCharCode(Math.floor(Math.random() *26) + 97);
-    // }
-    // function getRandomUpperCase() {
-    //     return String.fromCharCode(Math.floor(Math.random() *26) + 65);
-    // }
-    // function getRandomNumber() {
-    //     return String.fromCharCode(Math.floor(Math.random() *10) + 48);
-    // }
-    // function getRandomSpecialCharacter() {
-    //     var specialCharacter = "!@#$%^&*(){}[]+<>/,.'"
-    //     return specialCharacter[Math.floor(Math.random() *specialCharacter.length)];
-    // }
-
+    //for loop to generate random combination of criteria chosen by user
     for (var i = 0; i < input; i++) {
-        var pickChoices = choices[Math.floor(Math.random() * choices.length)];
-        password.push(pickChoices);
+        var randomPassword = choices[Math.floor(Math.random() * choices.length)];
+        password.push(randomPassword);
     }
-
-    
-
+    //returns password
+    return password.join("");
 
 }
-//Put
+
