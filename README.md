@@ -16,4 +16,8 @@ An array is used for defining lowercase, uppercase, numbers, and special charact
 A writePassword function is used to write the password generated into the textbox.
 An event listener is added to the generate button to listen for "click".
 
+## Deployed Application
 
+https://erikabeasley.github.io/PasswordGenerator/
+
+<img src="assets/Password-Generator.png" alt="Password Generator"/>
