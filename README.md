@@ -20,4 +20,4 @@ An event listener is added to the generate button to listen for "click".
 
 https://erikabeasley.github.io/PasswordGenerator/
 
-<img src="assets/Password-Generator.png" alt="Password Generator"/>
+![GitHub Logo](assets/Password-Generator.PNG)
